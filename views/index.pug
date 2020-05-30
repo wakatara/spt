@@ -1,0 +1,96 @@
+doctype html
+html(lang='en')
+    head
+       title Species Protection Tracker
+    body
+        .container
+        //- =[:error, :warning, :success, :notice].map { |type| flash_tag(type, :class => "alert alert-#{type} fade in", :bootstrap => true) }.join.html_safe
+        h3
+            em
+                Hi Daryl
+            //- = current_account.name.split.first
+        h3
+            Welcome to Amphibian Ark's 
+            em 
+                Ex Situ Programs' progress app
+
+        //- - case current_account.role
+        //-     - when 'program manager'
+        .bs-callout.bs-callout-info
+            h4
+                Here you can: 
+            h4
+            ul
+            li Find and update your oganization's current programs
+            li Locate priority species for your country and region that are in need of having programs established
+            li Get an comprehensive overview of worldwide, regional and country amphibian conservation efforts and progress
+
+        .panel-group
+            .panel.panel-default
+            .panel-heading
+                //- - if current_account.has_external_programs?
+                //- = link_to "#{org_name} + Externally Managed Programs", '#dashboard_programs', :class => 'accordion-toggle', 'data-toggle' => 'collapse'
+                //- - else
+                //- = link_to "#{org_name} Programs", '#dashboard_programs', :class => 'accordion-toggle', 'data-toggle' => 'collapse'
+            #dashboard_programs.panel-collapse.collapse.in
+                .panel-body
+                //- - if programs.empty?
+                //-     p.error 
+                //-     You have no programs. =(
+                //- - else        
+                //-     p
+                //-         partial 'base/programs'
+
+            .panel.panel-default
+            .panel-heading
+                //- = link_to "Species Needing Programs", '#dashboard_needed', :class => 'accordion-toggle', 'data-toggle' => 'collapse'
+            #dashboard_needed.accordion-body.collapse
+                .panel-body
+                //- - if needed.empty?
+                //-     p.error
+                //-         There are no species assessed as needing additional ex situ programs near you at the moment. =(
+                //- - else      
+                //-     p
+                        //- =partial 'base/needed'
+
+
+            .panel.panel-default
+            .panel-heading
+                //- = link_to "Programs Needing Support", '#dashboard_wanted', :class => 'accordion-toggle', 'data-toggle' => 'collapse'
+            #dashboard_wanted.accordion-body.collapse
+                .panel-body
+                //- - if wanted.empty?
+                //-     p.error
+                //-         There are no organizations that are currently requesting assistance. :-/
+                //- - else      
+                //-     p
+                        //- =partial 'base/wanted'   
+        
+        //- -when 'admin'
+        .bs-callout.bs-callout-info
+            h4 
+                The application tracks the worldwide progress of conservation programs for amphibian species that have been assessed as requiring urgent 
+            em 
+                ex situ rescue or some form of 
+            em 
+                ex situ research.
+
+        .panel.panel-default
+            .panel-heading
+                //- = link_to "Programs Needing Support", '#dashboard_wanted', :class => 'accordion-toggle', 'data-toggle' => 'collapse'
+            #dashboard_wanted.accordion-body.collapse
+            .panel-body
+                //- - if wanted.empty?
+                //- p.error
+                //-     There are no organizations that are currently requesting assistance. :-/
+                //- - else      
+                //- p
+                    //- =partial 'base/wanted'  
+        
+        //- - else
+        h4 
+            The application tracks the progress of conservation programs for amphibian species that have been assessed as requiring urgent 
+            em 
+                ex situ rescue or some form of ex situ research.
+        h4 Sorry, but your account currently does not have authorization to access the app.
+        h4 You should contact an AArk admin if you believe this is an error.
