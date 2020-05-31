@@ -5,6 +5,9 @@
 # Testing databases in sqlite
 *.db
 
+# Remove compiled html templates by pug
+/dist/
+
 ### Go ###
 # Binaries for programs and plugins
 *.exe
