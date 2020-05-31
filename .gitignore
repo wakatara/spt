@@ -6,7 +6,7 @@
 *.db
 
 # Remove compiled html templates by pug
-/dist/
+/views/dist/
 
 ### Go ###
 # Binaries for programs and plugins
